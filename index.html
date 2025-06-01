@@ -5,38 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Набір трусів Calvin Klein</title>
   <style>
-    /* Твій CSS залишив без змін */
+    /* Фонове фото і базові стилі */
     body {
-      font-family: Arial, sans-serif;
-      background: #fff0f6;
-      color: #333;
       margin: 0;
       padding: 20px;
+      font-family: Arial, sans-serif;
+      color: white;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    /* Затемнений контейнер для контенту */
     .container {
-      max-width: 480px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px 25px;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+      max-width: 480px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       text-align: center;
     }
+
     h1 {
-      color: #e91e63;
+      color: #ff4081;
       margin-bottom: 15px;
     }
+
     .price {
       font-size: 24px;
       margin-bottom: 20px;
     }
+
     .price del {
-      color: #888;
+      color: #ccc;
       margin-right: 10px;
     }
+
     .price strong {
-      color: #e91e63;
+      color: #ff4081;
     }
+
     .images {
       display: flex;
       justify-content: center;
@@ -44,48 +57,58 @@
       margin-bottom: 25px;
       flex-wrap: wrap;
     }
+
     .images img {
       width: 80px;
       border-radius: 10px;
-      border: 2px solid #e91e63;
+      border: 2px solid #ff4081;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     .images img:hover {
       transform: scale(1.15);
     }
+
     .main-image {
       width: 300px;
       height: auto;
       border-radius: 15px;
-      border: 3px solid #e91e63;
+      border: 3px solid #ff4081;
       margin-bottom: 20px;
     }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 15px;
       text-align: left;
     }
+
     label {
       font-weight: 600;
-      color: #e91e63;
+      color: #ff80ab;
     }
-    input, select {
+
+    input, select, datalist {
       padding: 12px 15px;
       font-size: 16px;
       border-radius: 10px;
-      border: 1.5px solid #e91e63;
+      border: 1.5px solid #ff80ab;
       outline: none;
       transition: border-color 0.3s ease;
       width: 100%;
       box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
     }
+
     input:focus, select:focus {
       border-color: #ff4081;
     }
+
     button {
-      background: #e91e63;
+      background: #ff4081;
       color: white;
       font-weight: 700;
       font-size: 18px;
@@ -96,33 +119,35 @@
       transition: background 0.3s ease;
       margin-top: 10px;
     }
+
     button:hover {
-      background: #c2185b;
+      background: #e00065;
     }
+
     .footer {
       text-align: center;
       margin-top: 12px;
       font-size: 12px;
-      color: #666;
+      color: #ccc;
     }
+
     .size-table {
       border-collapse: collapse;
       width: 100%;
       margin-bottom: 15px;
     }
+
     .size-table th, .size-table td {
-      border: 1px solid #e91e63;
+      border: 1px solid #ff80ab;
       padding: 8px;
       text-align: center;
+      color: #ff80ab;
     }
+
     .size-table th {
-      background-color: #fce4ec;
-      color: #e91e63;
+      background-color: rgba(255, 64, 129, 0.15);
     }
   </style>
-
-  <!-- Підключаємо EmailJS SDK -->
-  <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -131,7 +156,7 @@
     <div class="price">
       <del>1999 грн</del> <strong>1399 грн</strong> — акція!
     </div>
-
+    
     <div class="images">
       <img src="original (1).jpg" alt="Фото набору трусів" />
     </div>
@@ -179,6 +204,7 @@
 <script>
   const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
   const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+
   let cities = [];
 
   async function loadCities() {
@@ -235,7 +261,8 @@
     if (cityObj) {
       loadWarehouses(cityObj.Ref);
     } else {
-      document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
+      const warehouseSelect = document.getElementById('warehouseSelect');
+      warehouseSelect.innerHTML = '<option value="">Оберіть відділення</option>';
     }
   });
 
@@ -246,18 +273,3 @@
   document.getElementById('order-form').addEventListener('submit', e => {
     e.preventDefault();
     const form = e.target;
-
-    emailjs.sendForm('service_5tjdkih', 'template_6ch5tei', form)
-      .then(() => {
-        alert('Дякуємо! Ваше замовлення прийнято.');
-        form.reset();
-        document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
-      })
-      .catch(() => {
-        alert('Сталася помилка. Спробуйте ще раз.');
-      });
-  });
-</script>
-
-</body>
-</html>
