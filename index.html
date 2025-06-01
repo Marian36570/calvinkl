@@ -9,34 +9,32 @@
       font-family: Arial, sans-serif;
       background: #fff0f6;
       color: #333;
-      margin: 0; padding: 20px;
+      margin: 0;
+      padding: 20px;
     }
     .container {
-      max-width: 450px;
+      max-width: 480px;
       margin: 0 auto;
-      background: white;
-      padding: 25px 30px;
+      background: #fff;
+      padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(233,30,99,0.3);
+      box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+      text-align: center;
     }
     h1 {
-      text-align: center;
       color: #e91e63;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .price {
-      text-align: center;
-      margin-bottom: 25px;
-      font-size: 22px;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
     .price del {
       color: #888;
-      margin-right: 12px;
-      font-size: 18px;
+      margin-right: 10px;
     }
     .price strong {
       color: #e91e63;
-      font-size: 28px;
     }
     .images {
       display: flex;
@@ -46,7 +44,7 @@
       flex-wrap: wrap;
     }
     .images img {
-      width: 100px;
+      width: 80px;
       border-radius: 10px;
       border: 2px solid #e91e63;
       cursor: pointer;
@@ -55,10 +53,22 @@
     .images img:hover {
       transform: scale(1.15);
     }
+    .main-image {
+      width: 300px;
+      height: auto;
+      border-radius: 15px;
+      border: 3px solid #e91e63;
+      margin-bottom: 20px;
+    }
     form {
       display: flex;
       flex-direction: column;
       gap: 15px;
+      text-align: left;
+    }
+    label {
+      font-weight: 600;
+      color: #e91e63;
     }
     input, select {
       padding: 12px 15px;
@@ -67,6 +77,8 @@
       border: 1.5px solid #e91e63;
       outline: none;
       transition: border-color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
     input:focus, select:focus {
       border-color: #ff4081;
@@ -81,6 +93,7 @@
       padding: 14px 0;
       cursor: pointer;
       transition: background 0.3s ease;
+      margin-top: 10px;
     }
     button:hover {
       background: #c2185b;
@@ -91,57 +104,62 @@
       font-size: 12px;
       color: #666;
     }
-    /* Модальне вікно */
-    #sizeChartModal {
-      display: none;
-      position: fixed;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    #sizeChartModal > div {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
-      position: relative;
-      text-align: center;
-    }
-    #sizeChartModal table {
-      width: 100%;
+    .size-table {
       border-collapse: collapse;
-      margin-top: 10px;
+      width: 100%;
+      margin-bottom: 15px;
     }
-    #sizeChartModal th, #sizeChartModal td {
+    .size-table th, .size-table td {
       border: 1px solid #e91e63;
       padding: 8px;
+      text-align: center;
     }
-    #sizeChartModal th {
+    .size-table th {
       background-color: #fce4ec;
+      color: #e91e63;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Набір трусів Calvin Klein</h1>
+    <img src="original (1).jpg" alt="Фото набору трусів" class="main-image" />
     <div class="price">
-      <del>1999 грн</del> <strong>1399 грн</strong>
+      <del>1999 грн</del> <strong>1399 грн</strong> — акція!
     </div>
+    
     <div class="images">
-      <img src="https://i.ibb.co/bNNSsNk/ck-box.jpg" alt="Труси CK 1" />
-      <img src="https://i.ibb.co/1b1cQft/ck-black.jpg" alt="Труси CK 2" />
-      <img src="https://i.ibb.co/F6cvXbV/ck-red.jpg" alt="Труси CK 3" />
-      <img src="https://i.ibb.co/nzhchhW/ck-blue.jpg" alt="Труси CK 4" />
-      <img src="https://i.ibb.co/2vSS4fB/ck-white.jpg" alt="Труси CK 5" />
+      <img src="original (1).jpg" alt="Фото набору трусів" />
     </div>
+
+    <table class="size-table">
+      <thead>
+        <tr><th>Розмір</th><th>Обхват талії (см)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>S</td><td>70-76</td></tr>
+        <tr><td>M</td><td>76-82</td></tr>
+        <tr><td>L</td><td>82-88</td></tr>
+        <tr><td>XL</td><td>88-94</td></tr>
+        <tr><td>XXL</td><td>94-100</td></tr>
+      </tbody>
+    </table>
+
     <form id="order-form">
+      <label for="size">Обрати розмір:</label>
+      <select name="size" id="size" required>
+        <option value="">Оберіть розмір</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
+
       <input type="text" name="firstName" placeholder="Ім'я" required />
       <input type="text" name="lastName" placeholder="Прізвище" required />
       <input type="tel" name="phone" placeholder="Номер телефону" required pattern="[0-9+\- ]{7,15}" />
-      
+
       <input list="city-list" id="cityInput" name="city" placeholder="Введіть або оберіть місто" required autocomplete="off" />
       <datalist id="city-list"></datalist>
 
@@ -149,73 +167,105 @@
         <option value="">Оберіть відділення</option>
       </select>
 
-      <label for="sizeSelect">Обрати розмір:</label>
-      <select id="sizeSelect" name="size" required>
-        <option value="">Виберіть розмір</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-      </select>
-
-      <button type="button" id="showSizeChart">Розмірна таблиця</button>
-      
       <button type="submit">Замовити</button>
     </form>
     <div class="footer">Всі замовлення відправляються через Нову Пошту</div>
   </div>
 
-  <div id="sizeChartModal">
-    <div>
-      <h3>Розмірна таблиця</h3>
-      <table>
-        <tr><th>Розмір</th><th>Обхват талії (см)</th><th>Обхват стегон (см)</th></tr>
-        <tr><td>S</td><td>70-76</td><td>90-96</td></tr>
-        <tr><td>M</td><td>76-82</td><td>96-102</td></tr>
-        <tr><td>L</td><td>82-88</td><td>102-108</td></tr>
-        <tr><td>XL</td><td>88-94</td><td>108-114</td></tr>
-      </table>
-      <button id="closeSizeChart" style="margin-top:15px; padding: 10px 20px; background:#e91e63; color:#fff; border:none; border-radius:5px; cursor:pointer;">Закрити</button>
-    </div>
-  </div>
+<script>
+  const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
+  const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
 
-  <script>
-    const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
-    const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+  let cities = [];
 
-    let cities = [];
-
-    async function loadCities() {
-      const response = await fetch(NP_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          apiKey: apiKey,
-          modelName: "Address",
-          calledMethod: "getCities",
-          methodProperties: {}
-        })
+  async function loadCities() {
+    const response = await fetch(NP_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        apiKey: apiKey,
+        modelName: "Address",
+        calledMethod: "getCities",
+        methodProperties: {}
+      })
+    });
+    const data = await response.json();
+    if (data.success) {
+      const datalist = document.getElementById('city-list');
+      cities = data.data;
+      data.data.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city.Description;
+        option.dataset.ref = city.Ref;
+        datalist.appendChild(option);
       });
-      const data = await response.json();
-      if (data.success) {
-        const datalist = document.getElementById('city-list');
-        cities = data.data;
-        data.data.forEach(city => {
-          const option = document.createElement('option');
-          option.value = city.Description;
-          option.dataset.ref = city.Ref;
-          datalist.appendChild(option);
-        });
-      }
     }
+  }
 
-    async function loadWarehouses(cityRef) {
-      const response = await fetch(NP_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          apiKey: apiKey,
-          modelName: "Address",
-          calledMethod: "getWarehouses",
-          methodProperties:
+  async function loadWarehouses(cityRef) {
+    const response = await fetch(NP_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        apiKey: apiKey,
+        modelName: "Address",
+        calledMethod: "getWarehouses",
+        methodProperties: { CityRef: cityRef }
+      })
+    });
+    const data = await response.json();
+    const warehouseSelect = document.getElementById('warehouseSelect');
+    warehouseSelect.innerHTML = '<option value="">Оберіть відділення</option>';
+    if (data.success) {
+      data.data.forEach(wh => {
+        const option = document.createElement('option');
+        option.value = wh.Description;
+        option.textContent = wh.Description;
+        warehouseSelect.appendChild(option);
+      });
+    }
+  }
+
+  document.getElementById('cityInput').addEventListener('input', (e) => {
+    const cityName = e.target.value;
+    const cityObj = cities.find(c => c.Description.toLowerCase() === cityName.toLowerCase());
+    if (cityObj) {
+      loadWarehouses(cityObj.Ref);
+    } else {
+      const warehouseSelect = document.getElementById('warehouseSelect');
+      warehouseSelect.innerHTML = '<option value="">Оберіть відділення</option>';
+    }
+  });
+
+  loadCities();
+
+  emailjs.init("Dx57A1q8VUKvdmwN9");
+
+  document.getElementById('order-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      phone: form.phone.value,
+      city: form.city.value,
+      branch: form.branch.value,
+      size: form.size.value,
+      product: 'Набір трусів Calvin Klein - 5 шт',
+      price: '1399 грн'
+    };
+
+    emailjs.send('service_5tjdkih', 'template_6ch5tei', formData)
+      .then(() => {
+        alert('Дякуємо! Ваше замовлення прийнято.');
+        form.reset();
+        document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
+      })
+      .catch(() => {
+        alert('Сталася помилка. Спробуйте ще раз.');
+      });
+  });
+</script>
+</body>
+</html>
 
