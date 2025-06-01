@@ -1,101 +1,94 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Замовлення: Набір трусів Calvin Klein</title>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("Dx57A1q8VUKvdmwN9");
-  })();
-</script>
-<style>
-  body {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-    font-family: 'Arial', sans-serif;
-    margin: 0; padding: 0; color: #333;
-  }
-  .container {
-    max-width: 480px;
-    margin: 40px auto;
-    background: white;
-    border-radius: 15px;
-    padding: 30px 25px;
-    box-shadow: 0 10px 30px rgba(255, 105, 135, 0.4);
-  }
-  h1 {
-    color: #e91e63;
-    text-align: center;
-    margin-bottom: 15px;
-    font-weight: 700;
-  }
-  .price {
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-  .price del {
-    color: #999;
-    margin-right: 10px;
-  }
-  .price strong {
-    color: #e91e63;
-  }
-  .images {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-  }
-  .images img {
-    width: 80px;
-    border-radius: 10px;
-    border: 2px solid #e91e63;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .images img:hover {
-    transform: scale(1.15);
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  input, select {
-    padding: 12px 15px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: 1.5px solid #e91e63;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  input:focus, select:focus {
-    border-color: #ff4081;
-  }
-  button {
-    background: #e91e63;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 0;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  button:hover {
-    background: #c2185b;
-  }
-  .footer {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 12px;
-    color: #666;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Набір Calvin Klein</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #ffe6f0);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+
+    .price del {
+      color: #999;
+    }
+
+    .price strong {
+      font-size: 28px;
+      color: #e91e63;
+    }
+
+    .main-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input, select {
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #e91e63;
+      outline: none;
+    }
+
+    button {
+      background: #e91e63;
+      color: white;
+      font-size: 18px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #c2185b;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -103,21 +96,15 @@
     <div class="price">
       <del>1200 грн</del> <strong>1000 грн</strong>
     </div>
-    <div class="images">
-      <div class="images">
-  <img src="original%20(1).jpg" alt="Труси Calvin Klein" />
-</div>
+    <img src="original%20(1).jpg" alt="Труси Calvin Klein" class="main-image" />
 
-    </div>
     <form id="order-form">
-      <input type="text" name="firstName" placeholder="Ім'я" required />
-      <input type="text" name="lastName" placeholder="Прізвище" required />
-      <input type="tel" name="phone" placeholder="Номер телефону" required pattern="[0-9+\- ]{7,15}" />
-      
-      <input list="city-list" id="cityInput" name="city" placeholder="Введіть або оберіть місто" required autocomplete="off" />
-      <datalist id="city-list">
-        <!-- варіанти міст будуть тут -->
-      </datalist>
+      <input type="text" name="firstName" placeholder="Ім'я" required>
+      <input type="text" name="lastName" placeholder="Прізвище" required>
+      <input type="tel" name="phone" placeholder="Номер телефону" required pattern="[0-9+\- ]{7,15}">
+
+      <input list="city-list" id="cityInput" name="city" placeholder="Місто" required autocomplete="off">
+      <datalist id="city-list"></datalist>
 
       <select id="warehouseSelect" name="branch" required>
         <option value="">Оберіть відділення</option>
@@ -125,103 +112,102 @@
 
       <button type="submit">Замовити</button>
     </form>
-    <div class="footer">Всі замовлення відправляються через Нову Пошту</div>
+
+    <div class="footer">
+      Всі замовлення відправляються через Нову Пошту
+    </div>
   </div>
 
-<script>
-  const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
-  const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+  <script>
+    const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
+    const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+    let cities = [];
 
-  let cities = [];
-
-  async function loadCities() {
-    const response = await fetch(NP_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        apiKey: apiKey,
-        modelName: "Address",
-        calledMethod: "getCities",
-        methodProperties: {}
-      })
-    });
-    const data = await response.json();
-    if (data.success) {
-      const datalist = document.getElementById('city-list');
-      cities = data.data;
-      data.data.forEach(city => {
-        const option = document.createElement('option');
-        option.value = city.Description;
-        option.dataset.ref = city.Ref;
-        datalist.appendChild(option);
+    async function loadCities() {
+      const response = await fetch(NP_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey: apiKey,
+          modelName: "Address",
+          calledMethod: "getCities",
+          methodProperties: {}
+        })
       });
+      const data = await response.json();
+      if (data.success) {
+        const datalist = document.getElementById('city-list');
+        cities = data.data;
+        data.data.forEach(city => {
+          const option = document.createElement('option');
+          option.value = city.Description;
+          option.dataset.ref = city.Ref;
+          datalist.appendChild(option);
+        });
+      }
     }
-  }
 
-  async function loadWarehouses(cityRef) {
-    const response = await fetch(NP_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        apiKey: apiKey,
-        modelName: "Address",
-        calledMethod: "getWarehouses",
-        methodProperties: { CityRef: cityRef }
-      })
-    });
-    const data = await response.json();
-    const warehouseSelect = document.getElementById('warehouseSelect');
-    warehouseSelect.innerHTML = '<option value="">Оберіть відділення</option>';
-    if (data.success) {
-      data.data.forEach(wh => {
-        const option = document.createElement('option');
-        option.value = wh.Description;
-        option.textContent = wh.Description;
-        warehouseSelect.appendChild(option);
+    async function loadWarehouses(cityRef) {
+      const response = await fetch(NP_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey: apiKey,
+          modelName: "Address",
+          calledMethod: "getWarehouses",
+          methodProperties: { CityRef: cityRef }
+        })
       });
-    }
-  }
-
-  document.getElementById('cityInput').addEventListener('input', (e) => {
-    const cityName = e.target.value;
-    const cityObj = cities.find(c => c.Description.toLowerCase() === cityName.toLowerCase());
-    if (cityObj) {
-      loadWarehouses(cityObj.Ref);
-    } else {
+      const data = await response.json();
       const warehouseSelect = document.getElementById('warehouseSelect');
       warehouseSelect.innerHTML = '<option value="">Оберіть відділення</option>';
+      if (data.success) {
+        data.data.forEach(wh => {
+          const option = document.createElement('option');
+          option.value = wh.Description;
+          option.textContent = wh.Description;
+          warehouseSelect.appendChild(option);
+        });
+      }
     }
-  });
 
-  loadCities();
-
-  emailjs.init("Dx57A1q8VUKvdmwN9");
-
-  document.getElementById('order-form').addEventListener('submit', e => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = {
-      firstName: form.firstName.value,
-      lastName: form.lastName.value,
-      phone: form.phone.value,
-      city: form.city.value,
-      branch: form.branch.value,
-      product: 'Набір трусів Calvin Klein - 5 шт',
-      price: '1000 грн'
-    };
-
-    emailjs.send('service_5tjdkih', 'template_6ch5tei', formData)
-      .then(() => {
-        alert('Дякуємо! Ваше замовлення прийнято.');
-        form.reset();
+    document.getElementById('cityInput').addEventListener('input', (e) => {
+      const cityName = e.target.value;
+      const cityObj = cities.find(c => c.Description.toLowerCase() === cityName.toLowerCase());
+      if (cityObj) {
+        loadWarehouses(cityObj.Ref);
+      } else {
         document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
-      })
-      .catch(() => {
-        alert('Сталася помилка. Спробуйте ще раз.');
-      });
-  });
-</script>
+      }
+    });
+
+    loadCities();
+
+    emailjs.init("Dx57A1q8VUKvdmwN9");
+
+    document.getElementById('order-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        phone: form.phone.value,
+        city: form.city.value,
+        branch: form.branch.value,
+        product: 'Набір трусів Calvin Klein - 5 шт',
+        price: '1000 грн'
+      };
+
+      emailjs.send('service_5tjdkih', 'template_6ch5tei', formData)
+        .then(() => {
+          alert('Дякуємо! Ваше замовлення прийнято.');
+          form.reset();
+          document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
+        })
+        .catch(() => {
+          alert('Сталася помилка. Спробуйте ще раз.');
+        });
+    });
+  </script>
 </body>
 </html>
-
-
