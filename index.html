@@ -107,7 +107,16 @@
 <body>
   <div class="container">
     <h1>Набір трусів Calvin Klein</h1>
-    <img src="original (1).jpg" alt="Фото набору трусів" class="main-image" />
+    <img id="mainImage" src="original (1).jpg" alt="Фото набору трусів" class="main-image" />
+
+    <label for="color">Оберіть варіант:</label>
+    <select id="color" name="color" required>
+      <option value="original">Варіант 1</option>
+      <option value="calvin1">Варіант 2</option>
+      <option value="calvin2">Варіант 3</option>
+      <option value="calvin3">Варіант 4</option>
+    </select>
+
     <div class="price">
       <del>1999 грн</del> <strong>1400 грн</strong> — акція!
     </div>
@@ -157,7 +166,6 @@
 <script>
   const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
   const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
-
   let cities = [];
 
   async function loadCities() {
@@ -228,6 +236,19 @@
 
   loadCities();
 
+  // Заміна картинки при виборі варіанту
+  const colorMap = {
+    original: 'original (1).jpg',
+    calvin1: 'calvin1.jpg',
+    calvin2: 'calvin2.jpg',
+    calvin3: 'calvin3.jpg'
+  };
+
+  document.getElementById('color').addEventListener('change', function () {
+    const selected = this.value;
+    document.getElementById('mainImage').src = colorMap[selected];
+  });
+
   emailjs.init("Dx57A1q8VUKvdmwN9");
 
   document.getElementById('order-form').addEventListener('submit', function(e) {
@@ -240,7 +261,8 @@
       city: form.city.value,
       branch: form.branch.value,
       size: form.size.value,
-      product: 'Набір трусів Calvin Klein - 5 шт',
+      color: form.color.value,
+      product: `Набір трусів Calvin Klein (варіант ${form.color.value}) - 5 шт`,
       price: '1400 грн'
     };
 
