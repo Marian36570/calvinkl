@@ -7,134 +7,88 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
+      background: #fce4ec;
       margin: 0;
       padding: 20px;
     }
     .container {
       max-width: 480px;
-      margin: 0 auto;
+      margin: auto;
       background: #fff;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
-      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
     }
     h1 {
       color: #e91e63;
+      text-align: center;
+    }
+    .main-image {
+      width: 100%;
+      border: 3px solid #e91e63;
+      border-radius: 12px;
       margin-bottom: 15px;
     }
     .price {
-      font-size: 24px;
+      text-align: center;
+      font-size: 22px;
       margin-bottom: 20px;
     }
     .price del {
       color: #888;
-      margin-right: 10px;
     }
     .price strong {
       color: #e91e63;
     }
-    .main-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-      border: 3px solid #e91e63;
-      margin-bottom: 20px;
-    }
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      text-align: left;
+      gap: 12px;
     }
     label {
-      font-weight: 600;
+      font-weight: bold;
       color: #e91e63;
     }
     input, select {
-      padding: 12px 15px;
+      padding: 10px;
       font-size: 16px;
-      border-radius: 10px;
       border: 1.5px solid #e91e63;
+      border-radius: 8px;
       outline: none;
-      transition: border-color 0.3s ease;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    input:focus, select:focus {
-      border-color: #ff4081;
     }
     button {
       background: #e91e63;
       color: white;
-      font-weight: 700;
-      font-size: 18px;
+      font-weight: bold;
+      padding: 12px;
       border: none;
-      border-radius: 10px;
-      padding: 14px 0;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s ease;
-      margin-top: 10px;
     }
     button:hover {
       background: #c2185b;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 12px;
-      font-size: 12px;
-      color: #666;
-    }
-    .size-table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 15px;
-    }
-    .size-table th, .size-table td {
-      border: 1px solid #e91e63;
-      padding: 8px;
-      text-align: center;
-    }
-    .size-table th {
-      background-color: #fce4ec;
-      color: #e91e63;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Набір трусів Calvin Klein</h1>
-    <img id="mainImage" src="original (1).jpg" alt="Фото набору трусів" class="main-image" />
-
-    <label for="color">Оберіть варіант:</label>
-    <select id="color" name="color" required>
-      <option value="original">Варіант 1</option>
-      <option value="calvin1">Варіант 2</option>
-      <option value="calvin2">Варіант 3</option>
-      <option value="calvin3">Варіант 4</option>
-    </select>
+    
+    <img id="productImage" src="calvin1.jpg" class="main-image" alt="Фото трусів">
 
     <div class="price">
       <del>1999 грн</del> <strong>1400 грн</strong> — акція!
     </div>
 
-    <table class="size-table">
-      <thead>
-        <tr><th>Розмір</th><th>Обхват талії (см)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>S</td><td>70-76</td></tr>
-        <tr><td>M</td><td>76-82</td></tr>
-        <tr><td>L</td><td>82-88</td></tr>
-        <tr><td>XL</td><td>88-94</td></tr>
-        <tr><td>XXL</td><td>94-100</td></tr>
-      </tbody>
-    </table>
-
     <form id="order-form">
+      <label for="variant">Оберіть варіант:</label>
+      <select id="variant" name="variant" required onchange="changeImage()">
+        <option value="">Оберіть варіант</option>
+        <option value="calvin1">Варіант 1</option>
+        <option value="calvin2">Варіант 2</option>
+        <option value="calvin3">Варіант 3</option>
+      </select>
+
       <label for="size">Обрати розмір:</label>
       <select name="size" id="size" required>
         <option value="">Оберіть розмір</option>
@@ -147,9 +101,9 @@
 
       <input type="text" name="firstName" placeholder="Ім'я" required />
       <input type="text" name="lastName" placeholder="Прізвище" required />
-      <input type="tel" name="phone" placeholder="Номер телефону" required pattern="[0-9+\- ]{7,15}" />
+      <input type="tel" name="phone" placeholder="Номер телефону" required />
 
-      <input list="city-list" id="cityInput" name="city" placeholder="Введіть або оберіть місто" required autocomplete="off" />
+      <input list="city-list" id="cityInput" name="city" placeholder="Місто" required />
       <datalist id="city-list"></datalist>
 
       <select id="warehouseSelect" name="branch" required>
@@ -158,125 +112,119 @@
 
       <button type="submit">Замовити</button>
     </form>
-
-    <div class="footer">Всі замовлення відправляються через Нову Пошту</div>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
-  const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
-  let cities = [];
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    const apiKey = 'a249c591d0c7fff13d5bc43044b49d5e';
+    const NP_API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+    let cities = [];
 
-  async function loadCities() {
-    try {
-      const response = await fetch(NP_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          apiKey: apiKey,
-          modelName: "Address",
-          calledMethod: "getCities",
-          methodProperties: {}
-        })
-      });
-      const data = await response.json();
-      if (data.success) {
-        const datalist = document.getElementById('city-list');
+    // Init EmailJS
+    emailjs.init("Dx57A1q8VUKvdmwN9");
+
+    // Завантаження міст
+    async function loadCities() {
+      try {
+        const res = await fetch(NP_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            apiKey,
+            modelName: "Address",
+            calledMethod: "getCities",
+            methodProperties: {}
+          })
+        });
+        const data = await res.json();
         cities = data.data;
-        data.data.forEach(city => {
+        const list = document.getElementById('city-list');
+        cities.forEach(city => {
           const option = document.createElement('option');
           option.value = city.Description;
           option.dataset.ref = city.Ref;
-          datalist.appendChild(option);
+          list.appendChild(option);
         });
+      } catch (e) {
+        console.error('Помилка завантаження міст', e);
       }
-    } catch (err) {
-      console.error('Помилка при завантаженні міст:', err);
     }
-  }
 
-  async function loadWarehouses(cityRef) {
-    try {
-      const response = await fetch(NP_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          apiKey: apiKey,
-          modelName: "Address",
-          calledMethod: "getWarehouses",
-          methodProperties: { CityRef: cityRef }
-        })
-      });
-      const data = await response.json();
-      const warehouseSelect = document.getElementById('warehouseSelect');
-      warehouseSelect.innerHTML = '<option value="">Оберіть відділення</option>';
-      if (data.success) {
+    // Завантаження відділень
+    async function loadWarehouses(cityRef) {
+      try {
+        const res = await fetch(NP_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            apiKey,
+            modelName: "Address",
+            calledMethod: "getWarehouses",
+            methodProperties: { CityRef: cityRef }
+          })
+        });
+        const data = await res.json();
+        const select = document.getElementById('warehouseSelect');
+        select.innerHTML = '<option value="">Оберіть відділення</option>';
         data.data.forEach(wh => {
           const option = document.createElement('option');
           option.value = wh.Description;
           option.textContent = wh.Description;
-          warehouseSelect.appendChild(option);
+          select.appendChild(option);
         });
+      } catch (e) {
+        console.error('Помилка завантаження відділень', e);
       }
-    } catch (err) {
-      console.error('Помилка при завантаженні відділень:', err);
     }
-  }
 
-  document.getElementById('cityInput').addEventListener('input', (e) => {
-    const cityName = e.target.value;
-    const cityObj = cities.find(c => c.Description.toLowerCase() === cityName.toLowerCase());
-    if (cityObj) {
-      loadWarehouses(cityObj.Ref);
-    } else {
-      document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
+    // Зміна міста
+    document.getElementById('cityInput').addEventListener('input', (e) => {
+      const city = cities.find(c => c.Description.toLowerCase() === e.target.value.toLowerCase());
+      if (city) {
+        loadWarehouses(city.Ref);
+      }
+    });
+
+    // Зміна фото
+    function changeImage() {
+      const variant = document.getElementById('variant').value;
+      const image = document.getElementById('productImage');
+      if (variant) {
+        image.src = variant + '.jpg';
+      }
     }
-  });
 
-  loadCities();
+    // Відправка форми
+    document.getElementById('order-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const formData = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        phone: form.phone.value,
+        city: form.city.value,
+        branch: form.branch.value,
+        size: form.size.value,
+        variant: form.variant.value,
+        product: `Набір трусів Calvin Klein (${form.variant.value}) - 5 шт`,
+        price: '1400 грн'
+      };
 
-  // Заміна картинки при виборі варіанту
-  const colorMap = {
-    original: 'original (1).jpg',
-    calvin1: 'calvin1.jpg',
-    calvin2: 'calvin2.jpg',
-    calvin3: 'calvin3.jpg'
-  };
+      emailjs.send('service_5tjdkih', 'template_6ch5tei', formData)
+        .then(() => {
+          alert('✅ Ваше замовлення надіслано!');
+          form.reset();
+          document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
+          document.getElementById('productImage').src = 'calvin1.jpg';
+        })
+        .catch((error) => {
+          console.error('❌ Помилка EmailJS:', error);
+          alert('Помилка! Спробуйте ще раз.');
+        });
+    });
 
-  document.getElementById('color').addEventListener('change', function () {
-    const selected = this.value;
-    document.getElementById('mainImage').src = colorMap[selected];
-  });
-
-  emailjs.init("Dx57A1q8VUKvdmwN9");
-
-  document.getElementById('order-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = this;
-    const formData = {
-      firstName: form.firstName.value,
-      lastName: form.lastName.value,
-      phone: form.phone.value,
-      city: form.city.value,
-      branch: form.branch.value,
-      size: form.size.value,
-      color: form.color.value,
-      product: `Набір трусів Calvin Klein (варіант ${form.color.value}) - 5 шт`,
-      price: '1400 грн'
-    };
-
-    emailjs.send('service_5tjdkih', 'template_6ch5tei', formData)
-      .then(() => {
-        alert('Дякуємо! Ваше замовлення прийнято.');
-        form.reset();
-        document.getElementById('warehouseSelect').innerHTML = '<option value="">Оберіть відділення</option>';
-      })
-      .catch((error) => {
-        console.error('Помилка EmailJS:', error);
-        alert('Сталася помилка. Спробуйте ще раз.');
-      });
-  });
-</script>
+    loadCities();
+  </script>
 </body>
 </html>
